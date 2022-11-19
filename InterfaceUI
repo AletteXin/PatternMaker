@@ -1,0 +1,41 @@
+package userinterface;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+
+public class InterfaceUI extends JFrame {
+
+	
+	public InterfaceUI() {
+		initUI();
+	}
+	
+	private void initUI() {
+		
+		add(new graphics());
+		setTitle("Bodice Pattern");
+		setSize(1000, 1000);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		EventQueue.invokeLater(new Runnable() {
+			
+			@Override 
+			public void run() {
+				InterfaceUI ui = new InterfaceUI();
+				ui.setVisible(true);
+			}
+			
+			
+		});
+	}
+
+}
+
