@@ -55,11 +55,18 @@ public class graphics extends JPanel{
 		
 		GeneralPath frontBodice = new GeneralPath();
 		
-		int quarterWaist = 24;
-		int neckDepth = 5;
-		int halfShoulder = 20;
-		int armHoleHalfCir = 12;
-		int torsoHeight = 30;
+		
+		//in inches 
+		
+		int expand = 5;
+		int hip = 132;
+		int waist = 107;
+		int quarterMidBody = (waist) / 4 * expand; 
+		int neckDepth = 10 * expand;
+		int shoulder = ( 15 ) * expand ;
+		int armHoleHalfCir = ( 26 ) * expand;
+		int torsoHeight = 54 * expand;
+		int quarterNeckCir = 40 / 4 * expand;
 		
 		int startPointX = 10;
 		int startPointY = 5;
@@ -67,21 +74,21 @@ public class graphics extends JPanel{
 		
 		int startFrontBodiceX = startPointX;
 		int startFrontBodiceY = startPointY + neckDepth;
-		int frontShoulderX = startPointX + halfShoulder;
-		int frontNeckXOne = startFrontBodiceX + ((frontShoulderX - startFrontBodiceX) / 3);
-		int frontNeckYOne = startFrontBodiceY + 1;
-		int frontNeckXThree = frontShoulderX - ((frontShoulderX - startFrontBodiceX) / 3);
+		int frontShoulderX = startPointX + shoulder + (shoulder / 10);
+		int frontNeckXOne = startFrontBodiceX + (quarterNeckCir/2);
+		int frontNeckYOne = startFrontBodiceY;
+		int frontNeckXThree = startFrontBodiceX + (quarterNeckCir);
 		int frontNeckYThree = startPointY;
-		int frontNeckXTwo = startFrontBodiceX + (2*((frontShoulderX - startFrontBodiceX) / 3));
+		int frontNeckXTwo = frontNeckXThree;
 		int frontNeckYTwo = frontNeckYThree + ((frontNeckYOne - frontNeckYThree - startPointY) / 2);
-		int frontShoulderY = frontNeckYTwo - 3;
-		int frontArmHoleXOne = frontShoulderX - 5;
-		int frontArmHoleXThree = startFrontBodiceX + quarterWaist;
+		int frontShoulderY = frontNeckYThree + (neckDepth / 5);
+		int frontArmHoleXOne = frontShoulderX - (shoulder / 4);
+		int frontArmHoleXThree = startFrontBodiceX + quarterMidBody;
 		int frontArmHoleYThree = armHoleHalfCir + startPointY;
-		int frontArmHoleYTwo = frontArmHoleYThree - 2;
-		int frontArmHoleYOne = frontArmHoleYTwo - 2;
+		int frontArmHoleYTwo = frontArmHoleYThree - (armHoleHalfCir / 20);
+		int frontArmHoleYOne = frontArmHoleYTwo - (armHoleHalfCir / 10);
 		int frontArmHoleXTwo = frontArmHoleXOne + ((frontArmHoleXThree - frontArmHoleXOne) / 2);
-		int frontBottomX = startFrontBodiceX + quarterWaist; 
+		int frontBottomX = startFrontBodiceX + quarterMidBody; 
 		int frontBottomY = torsoHeight + startPointY;
 		int frontEndX = startFrontBodiceX;
 		int frontEndY = frontBottomY;
@@ -98,25 +105,26 @@ public class graphics extends JPanel{
 		
 		GeneralPath backBodice = new GeneralPath();
 		
-		int offsetFromFrontBodice = quarterWaist + 30;
+		int offsetFromFrontBodice = quarterMidBody + 30;
 		
 		int startBackBodiceX = startFrontBodiceX + offsetFromFrontBodice;
 		int startBackBodiceY = frontArmHoleYThree;
-		int backShoulderX = frontShoulderX + offsetFromFrontBodice;
-		int backShoulderY = startPointY;
-		int backArmHoleXOne = startBackBodiceX + (halfShoulder/2);
-		int backArmHoleYOne = startBackBodiceY + 1;
-		int backArmHoleXTwo = backArmHoleXOne + (halfShoulder/20);
-		int backArmHoleXThree = backArmHoleXTwo + (halfShoulder/20);
-		int backArmHoleYThree = backShoulderY + 5;
+
+		int backArmHoleXOne = startBackBodiceX + (shoulder/2);
+		int backArmHoleYOne = startBackBodiceY + (armHoleHalfCir / 40);
+		int backArmHoleXTwo = backArmHoleXOne + (shoulder / 5);
+		int backArmHoleXThree = startPointX + offsetFromFrontBodice + (quarterMidBody - shoulder - (shoulder / 10)) - (quarterNeckCir/2);
+		int backArmHoleYThree = startPointY + (neckDepth / 3);
 		int backArmHoleYTwo = backArmHoleYThree + ((startBackBodiceY - backArmHoleYThree) / 2);
+		int backShoulderX = backArmHoleXThree + (shoulder - (quarterNeckCir / 3 * 2));
+		int backShoulderY = startPointY;
 		int backNeckXOne = backShoulderX;
 		int backNeckYOne = backArmHoleYThree;
-		int backNeckXTwo = backNeckXOne + 5;
-		int backNeckYTwo = backNeckYOne + 5;
-		int backNeckXThree = startBackBodiceX + quarterWaist; 
+		int backNeckXTwo = backNeckXOne + (quarterNeckCir / 6);
+		int backNeckYTwo = backNeckYOne + (neckDepth / 3);
+		int backNeckXThree = startBackBodiceX + quarterMidBody; 
 		int backNeckYThree = neckDepth - (neckDepth / 5) + startPointY;
-		int backBottomX = startBackBodiceX + quarterWaist; 
+		int backBottomX = startBackBodiceX + quarterMidBody; 
 		int backBottomY = frontEndY;
 		int backEndX = startBackBodiceX;
 		int backEndY = backBottomY;
