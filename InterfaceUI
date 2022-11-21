@@ -7,13 +7,13 @@ import javax.swing.JFrame;
 public class InterfaceUI extends JFrame {
 
 	
-	public InterfaceUI() {
-		initUI();
+	public InterfaceUI(Bodice bodiceToShow) {
+		initUI(bodiceToShow);
 	}
 	
-	private void initUI() {
+	private void initUI(Bodice bodiceToShow) {
 		
-		add(new graphics());
+		add(bodiceToShow);			
 		setTitle("Bodice Pattern");
 		setSize(1000, 1000);
 		setLocationRelativeTo(null);
@@ -29,8 +29,15 @@ public class InterfaceUI extends JFrame {
 			
 			@Override 
 			public void run() {
-				InterfaceUI ui = new InterfaceUI();
-				ui.setVisible(true);
+				VNeckBodice vNeckToShow = new VNeckBodice(132, 107, 10, 15, 26, 54, 40);
+				InterfaceUI ui1 = new InterfaceUI(vNeckToShow);
+				ui1.setVisible(true);
+				
+				Bodice cNeckToShow = new Bodice(132, 107, 10, 15, 26, 54, 40);
+				InterfaceUI ui2 = new InterfaceUI(cNeckToShow);
+				ui2.setVisible(true);				
+				
+				
 			}
 			
 			
