@@ -7,8 +7,7 @@ import java.awt.geom.GeneralPath;
 import javax.swing.*;
 
 
-public class Bodice extends JPanel{
-	
+public abstract class Bodice extends JPanel{
 	
 	//instances 
 	
@@ -38,7 +37,6 @@ public class Bodice extends JPanel{
 		this.armHoleDepth = armHoleDepth * expand;
 		this.napeToWaist = napeToWaist * expand;
 		this.quarterNeckCir = neckCir / 4 * expand;
-		this.neckLine = "C";
 		
 	}
 	
@@ -57,12 +55,14 @@ public class Bodice extends JPanel{
 	//methods 
 	
 	public void drawFrontNeck(GeneralPath typeOfBodice, int frontNeckXOne, int frontNeckYOne, int frontNeckXTwo, int frontNeckYTwo, int frontNeckXThree, int frontNeckYThree) {
-		
 			typeOfBodice.curveTo(frontNeckXOne, frontNeckYOne, frontNeckXTwo, frontNeckYTwo, frontNeckXThree, frontNeckYThree);	
-
 		
 	}
 	
+	
+	public String getBodiceType() {
+		return "Standard Bodice";
+	}
 	
 
 	private void drawBodice(Graphics g) {
@@ -197,6 +197,9 @@ public class Bodice extends JPanel{
 
 		backBodice.closePath();
 
+		
+		
+		
 
 		g2d.fill(frontBodice);
 		g2d.fill(backBodice);
