@@ -28,6 +28,12 @@ public class VNeckBodice extends Bodice {
 	}
 
 	
+	@Override
+	public String getBodiceType() {
+		return "V Neck Bodice";
+	}
+	
+	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
