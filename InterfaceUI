@@ -1,48 +1,62 @@
 package userinterface;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 
 public class InterfaceUI extends JFrame {
 
+	//constructors
 	
+	/**
+	 * Set constructor for InterfaceUI for bodice 
+	 * @param bodiceToShow
+	 */
 	public InterfaceUI(Bodice bodiceToShow) {
 		initUI(bodiceToShow);
 	}
 	
+	/**
+	 * Set constructor for InterfaceUI for sleeves
+	 * @param sleeveToShow
+	 */
+	public InterfaceUI(Sleeves sleeveToShow) {
+		initUI(sleeveToShow);
+	}
+	
+	/**
+	 * Assign pop-up interface window 
+	 * @param bodiceToShow
+	 */
 	private void initUI(Bodice bodiceToShow) {
 		
-		add(bodiceToShow);			
+		//add bodice to draw/show 
+		add(bodiceToShow);		
+		//set title of pop-up window as bodice type  
 		setTitle(bodiceToShow.getBodiceType());
+		//set size of pop-up window 
 		setSize(1000, 1000);
+		//set location of pop-up window 
 		setLocationRelativeTo(null);
 //		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
-	
-//	
-//	public static void main(String[] args) {
-//		// TODO Auto-generated method stub
-//
-//		EventQueue.invokeLater(new Runnable() {
-//			
-//			@Override 
-//			public void run() {
-//				VNeckBodice vNeckToShow = new VNeckBodice(132, 107, 10, 15, 26, 54, 40);
-//				InterfaceUI ui1 = new InterfaceUI(vNeckToShow);
-//				ui1.setVisible(true);
-//				
-//				CNeckBodice cNeckToShow = new CNeckBodice(132, 107, 10, 15, 26, 54, 40);
-//				InterfaceUI ui2 = new InterfaceUI(cNeckToShow);
-//				ui2.setVisible(true);				
-//				
-//				
-//			}
-//			
-//			
-//		});
-//	}
+
+	/**
+	 * Assign pop-up interface window 
+	 * @param sleeveToShow
+	 */
+	private void initUI(Sleeves sleeveToShow) {
+		
+		//add sleeve to draw/show 
+		add(sleeveToShow);		
+		//set title of pop-up window as sleeve type 
+		setTitle(sleeveToShow.getSleeveType());
+		//set size of pop-up window 
+		setSize(1000, 1000);
+		//set location of pop-up window 
+		setLocationRelativeTo(null);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+	}
 
 }
 
