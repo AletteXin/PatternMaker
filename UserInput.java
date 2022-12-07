@@ -10,7 +10,7 @@ public class UserInput {
 	 * @param scanner
 	 * @return typeOfBodice in the form of an integer 
 	 */
-	private static int getUserTypeOfBodice(Scanner scanner) {
+	public int getUserTypeOfBodice(Scanner scanner) {
 
 		//initialise typeOfBodice as 0 
 		int typeOfBodice = 0; 
@@ -73,7 +73,7 @@ public class UserInput {
 	 * @param scanner
 	 * @return typeOfSleeve in the form of an integer 
 	 */
-	private static int getUserTypeOfSleeve(Scanner scanner) {
+	public int getUserTypeOfSleeve(Scanner scanner) {
 
 		//initialise typeOfBodice as 0 
 		int typeOfSleeve = 0; 
@@ -133,7 +133,7 @@ public class UserInput {
 	 * @param scanner
 	 * @return an array of integers with user measurements input 
 	 */	
-	private static int[] getUserMeasurements(Scanner scanner) {
+	public int[] getUserMeasurements(Scanner scanner) {
 
 		//initialise an integer for hip
 		int hip;
@@ -237,7 +237,7 @@ public class UserInput {
 	 * @param scanner
 	 * @return True if user does not want additional drawings; False if user wants more drawings 
 	 */
-	private static boolean checkIfUserIsDone(Scanner scanner)
+	public boolean checkIfUserIsDone(Scanner scanner)
 	{ 
 		// message prompt if user would like another drawing 
 		System.out.println("Would you like to get a drawing? (y/n)");
@@ -285,13 +285,19 @@ public class UserInput {
 	 * @param hipWaistShoulder
 	 * @return String "OK" if no errors, or others describing errors 
 	 */
-	private static String checkHipWaistShoulderInput (int hipWaistShoulder) {
+	public String checkHipWaistShoulderInput (int hipWaistShoulder) {
 
 		//if hipWaistShoulder input is less than or equal to zero
 		if (hipWaistShoulder <= 0) {
 			//return error message
 			return "Please input a figure that is more than zero for hip and/or shoulder and/or waist measurements";
-		} else {
+			
+		} 
+		//if hipWaistShoulder is more than 300cm (based on world's largest waist of c.300cm)
+		else if (hipWaistShoulder >= 300) {
+			return "Please input a figure that is less than 300cm for hip and/or shoulder and/or waist measurements";
+		}
+		else {
 			//else return "OK"
 			return "OK";
 		}
@@ -302,19 +308,29 @@ public class UserInput {
 	 * @param neck depth, nape to waist 
 	 * @return String "OK" if no errors, or others describing errors 
 	 */
-	private static String checkNeckDepthAndNapeToWaist (int napeDepth, int napeToWaist) {
+	public String checkNeckDepthAndNapeToWaist (int napeDepth, int napeToWaist) {
 
 		//if neck depth or nape to waist measurements are less than or equal to zero 
 		if (napeDepth  <= 0 || napeToWaist <= 0) {
 			//return error message 
-			return "Please input a figure that is more than zero for neck depth and/or nape to waist measurement";
-
+			return "Please input a figure that is more than zero for nape depth and/or nape to waist measurement";
 			//if neck depth is more than or equal to nape to waist measurement 
-		} else if (napeDepth >= napeToWaist) {
+		} 
+		
+		//if nape depth is more than 200cm or napeToWaist is more than 272cm
+		//(based on the tallest man on earth of 272cm)
+		else if (napeDepth >= 200 || napeToWaist >= 272) {
+			return "Please input nape depth that is less than 200cm and/or nape to waist measurement that is less than 272cm";	
+		} 
+		
+		else if (napeDepth >= napeToWaist) {
 			//return error message 
-			return "Please input a neck depth that is shorter than the Nape to waist measurement";
-			//if no errors return "OK"
-		} else {
+			return "Please input a nape depth that is shorter than the Nape to Waist measurement";
+			
+		} 
+
+		//else, if no errors, return "OK"
+		else {
 			return "OK";
 		}
 	}
@@ -324,18 +340,28 @@ public class UserInput {
 	 * @param arm hole depth, nape to waist 
 	 * @return String "OK" if no errors, or others describing errors 
 	 */
-	private static String checkArmHoleDepth (int armHoleDepth, int napeToWaist) {
+	public String checkArmHoleDepth (int armHoleDepth, int napeToWaist) {
 
 		//if arm hole depth is less than or equal to zero
 		if (armHoleDepth <= 0) {
 			//return error message 
 			return "Please input a figure that is more than zero for arm hole depth";
-			//if arm hole depth is more than or equal to nape to waist 
-		} else if (armHoleDepth >= napeToWaist) {
+		} 
+		
+		//if arm hole depth is more than 100cm (based on about 1/3 of the tallest man on earth of 272cm)
+		else if (armHoleDepth >= 100) {
+			//return error message 
+			return "Please input an arm hole depth measurement that is less 100cm";
+		}
+
+		//if arm hole depth is more than or equal to nape to waist 
+		else if (armHoleDepth >= napeToWaist) {
 			//return error message 
 			return "Please input an arm hole depth measurement that is less than nape to waist measurement";
-			//else, if no errors, return "OK"
-		} else {
+		
+		}
+		//else, if no errors, return "OK"
+		else {
 			return "OK";
 		}
 
@@ -346,13 +372,17 @@ public class UserInput {
 	 * @param neck circumference, shoulder 
 	 * @return String "OK" if no errors, or others describing errors 
 	 */
-	private static String checkNeckCir (int neckCir, int shoulder) {
+	public String checkNeckCir (int neckCir) {
 
 		//if neck circumference is less than or equal to zero 
 		if (neckCir <= 0) {
 			//return error message 
 			return "Please input a figure that is more than zero for neck circumference measurement";
 		} 
+		//if neck circumference is more than 52cm (based on world's longest neck circumference of 40cm)
+		else if (neckCir >= 52){
+			return "Please input a figure that is less than 52cm for neck circumference measurement";
+		}
 		//if no errors, return "OK"
 		else {
 			return "OK";
@@ -364,14 +394,17 @@ public class UserInput {
 	 * @param sleeve length 
 	 * @return String "OK" if no errors, or others describing errors 
 	 */
-	private static String checkSleeveLength (int sleeveLength) {
+	public String checkSleeveLength (int sleeveLength) {
 
 		//if sleeveLength is less than or equal to zero
 		if (sleeveLength <= 0) {
 			//return error message 
 			return "Please input a figure that is more than zero for sleeve length measurement";
 		} 
-		
+		//if arm hole depth is more than 190cm (based on about 2/3 of the tallest man on earth of 272cm)
+		else if (sleeveLength >= 190) {
+			return "Please input a sleeveLength figure that is less than 190cm";
+		}
 		//else if no errors 
 		else {
 			//return "OK"
@@ -385,7 +418,7 @@ public class UserInput {
 	 * @param arm circumference, arm hole depth 
 	 * @return String "OK" if no errors, or others describing errors 
 	 */
-	private static String checkArmCir (int armCir, int armHoleDepth) {
+	public String checkArmCir (int armCir, int armHoleDepth) {
 
 		//if arm circumference is less than or equal to zero
 		if (armCir <= 0) {
@@ -416,12 +449,10 @@ public class UserInput {
 	 * @param armCir
 	 * @return True if no errors, False if there are errors 
 	 */
-	private static boolean checkInputMeasurements(int hip, int waist, int neckDepth, 
+	public boolean checkInputMeasurements(int hip, int waist, int neckDepth, 
 			int shoulder, int armHoleDepth, int napeToWaist, int neckCir, int sleeveLength, int armCir) {
 		
-//		//initialise an array list to store OK measurements 
-//		ArrayList <String> okList = new ArrayList <String> ();
-//		
+
 		//initialise an array list to store errors 
 		ArrayList <String> errorList = new ArrayList <String>();
 
@@ -441,7 +472,7 @@ public class UserInput {
 		String armHoleDepthCheck = checkArmHoleDepth (armHoleDepth, napeToWaist);
 		
 		//perform data validation on neck circumference measurement
-		String neckCirCheck = checkNeckCir (neckCir, shoulder);
+		String neckCirCheck = checkNeckCir (neckCir);
 		
 		//perform data validation on sleeve length measurement
 		String sleeveLengthCheck = checkSleeveLength(sleeveLength);
@@ -451,17 +482,17 @@ public class UserInput {
 
 		//assign errors from hipCheck to errorList 
 		if (!hipCheck.equals("OK")) {
-			errorList.add("Please input a figure that is more than zero for hip measurement");
+			errorList.add(hipCheck);
 		}
 
 		//assign errors from waistCheck to errorList 
 		if (!waistCheck.equals("OK")) {
-			errorList.add("Please input a figure that is more than zero for waist measurement");
+			errorList.add(waistCheck);
 		}
 
 		//assign errors from shoulderCheck to errorList  
 		if (!shoulderCheck.equals("OK")) {
-			errorList.add("Please input a figure that is more than zero for shoulder measurement");
+			errorList.add(shoulderCheck);
 		}
 
 		//assign errors from neckDepthAndNapeToWaistCheck to errorList 
@@ -513,44 +544,46 @@ public class UserInput {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		UserInput ut = new UserInput();
+		
 		//initialise a scanner to receive user inputs 
 		Scanner scan = new Scanner(System.in);
 
 		//initialise a inputMeasurementsValid boolean as false 
 		boolean inputMeasurementsValid = false;
 
-		//initialise int for hip
+		//initialise integer for hip
 		int hip = 0; 
 		
-		//initialise int for waist
+		//initialise integer for waist
 		int waist = 0; 
 		
-		//initialise int for neck depth
+		//initialise integer for neck depth
 		int neckDepth = 0; 
 		
-		//initialise int for shoulder
+		//initialise integer for shoulder
 		int shoulder = 0;
 		
-		//initialise int for arm hole depth
+		//initialise integer for arm hole depth
 		int armHoleDepth = 0; 
 		
-		//initialise int for nape to waist 
+		//initialise integer for nape to waist 
 		int napeToWaist = 0;
 		
-		//initialise int for neck circumference 
+		//initialise integer for neck circumference 
 		int neckCir = 0; 
 		
-		//initialise int for sleeve length
+		//initialise integer for sleeve length
 		int sleeveLength = 0;
 		
-		//initialise int for arm circumference 
+		//initialise integer for arm circumference 
 		int armCir = 0;
 
-		//while input measuremetns are not valid 
+		//while input measurements are not valid 
 		while (!inputMeasurementsValid) {
 
 			//prompt user to input measurements 
-			int bodiceMeasurements[] = getUserMeasurements(scan);
+			int bodiceMeasurements[] = ut.getUserMeasurements(scan);
 
 			//set hip 
 			hip = bodiceMeasurements[0]; 
@@ -572,20 +605,20 @@ public class UserInput {
 			armCir = bodiceMeasurements[8];
 
 			//check input measurements if valid 
-			inputMeasurementsValid = checkInputMeasurements(hip, waist, neckDepth, 
+			inputMeasurementsValid = ut.checkInputMeasurements(hip, waist, neckDepth, 
 					shoulder, armHoleDepth, napeToWaist, neckCir, sleeveLength, armCir);
 
 		}
 
 
 		//while user is not done with the service 
-		while (!checkIfUserIsDone(scan)) {
+		while (!ut.checkIfUserIsDone(scan)) {
 			
 			//prompt user for type of bodice 
-			int typeOfBodice = getUserTypeOfBodice(scan);
+			int typeOfBodice = ut.getUserTypeOfBodice(scan);
 			
 			//prompt user for type of sleeve
-			int typeOfSleeve = getUserTypeOfSleeve(scan);
+			int typeOfSleeve = ut.getUserTypeOfSleeve(scan);
 			
 			//initialise a Bodice object 
 			Bodice bodiceToShow; 
