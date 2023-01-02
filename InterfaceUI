@@ -1,7 +1,17 @@
 package userinterface;
 
-import javax.swing.JFrame;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+
+/**
+ * Displays Bodice and Sleeves using JFrame 
+ */
 public class InterfaceUI extends JFrame {
 
 	//constructors
@@ -12,6 +22,8 @@ public class InterfaceUI extends JFrame {
 	 */
 	public InterfaceUI(Bodice bodiceToShow) {
 		initUI(bodiceToShow);
+		
+		
 	}
 	
 	/**
@@ -33,11 +45,20 @@ public class InterfaceUI extends JFrame {
 		//set title of pop-up window as bodice type  
 		setTitle(bodiceToShow.getBodiceType());
 		//set size of pop-up window 
-		setSize(1000, 1000);
-		//set location of pop-up window 
-		setLocationRelativeTo(null);
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		setSize(2000, 2000);
+//		//set location of pop-up window 
+//		setLocation(null);
+		//set background color to white
+		setBackground(Color.WHITE);
+		setForeground(Color.WHITE);
+//		JScrollPane scrollPane = new JScrollPane();
+//		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+//        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+//        add(scrollPane);
+//		JPanel controlPanel = new JPanel();
+//	    controlPanel.setLayout(new FlowLayout());
+//	    add(controlPanel);
+	    
 	}
 
 	/**
@@ -45,17 +66,18 @@ public class InterfaceUI extends JFrame {
 	 * @param sleeveToShow
 	 */
 	private void initUI(Sleeves sleeveToShow) {
-		
 		//add sleeve to draw/show 
 		add(sleeveToShow);		
 		//set title of pop-up window as sleeve type 
 		setTitle(sleeveToShow.getSleeveType());
 		//set size of pop-up window 
-		setSize(1000, 1000);
-		//set location of pop-up window 
-		setLocationRelativeTo(null);
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		setSize(2000, 2000);
+//		//set location of pop-up window 
+//		setLocation(null);
+		//set background color to white 
+		setBackground(Color.WHITE);
+		setForeground(Color.WHITE);
+
 	}
 
 }
